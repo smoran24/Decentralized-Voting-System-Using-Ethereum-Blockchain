@@ -1,5 +1,5 @@
 El sistema de votación descentralizado que utiliza Ethereum Blockchain es una solución segura y transparente para la realización de elecciones. Aprovechando la tecnología blockchain de Ethereum, este sistema garantiza registros de votación a prueba de manipulaciones, lo que permite a los usuarios emitir sus votos de forma remota mientras mantienen el anonimato y evitan el fraude. Explora este innovador proyecto para procesos de votación confiables y descentralizados.
-Está hecho con Python (backend servidor local), Javascript (front), y Solidity (contratos inteligentes).
+Está hecho con Python (backend servidor local), Javascript, y Solidity (contratos inteligentes).
 
 - Implementa JWT para la autenticación y autorización segura de votantes.
 - Utiliza la blockchain Ethereum para registros de votación transparentes y a prueba de manipulaciones.
@@ -27,16 +27,16 @@ Instalación:
 11. Ir al directorio raíz del repositorio local e instalar los node modules: npm install
 12. Instalar dependencias de python: pip install fastapi mysql-connector-python pydantic python-dotenv uvicorn uvicorn[standard] PyJWT
 13. Importante: Actualizar las credenciales con las de tu base de datos en el archivo: ./Database_API/.env
+14. Abrir una terminal de windows en el directorio raíz del proyecto y ejecutar el comando:  truffle console
+15. En la misma terminal, compilar los contratos inteligentes con el comando:  compile
 
 Uso:
-
 1. Abrir Ganache e ir al espacio de trabajo Development.
-2. Abrir una terminal de windows en el directorio raíz del proyecto y ejecutar el comando:  truffle console
-3. En la misma terminal, compilar los contratos inteligentes con el comando:  compile
-4. En Visual Studio Code, abrir la terminal, y agrupar app.js con browserify:  browserify ./src/js/app.js -o ./src/dist/app.bundle.js (Si no funciona por algún error de política de ejecución, correr el siguiente comando en Powershell como administrador: Set-ExecutionPolicy RemoteSigned)
-5. En la misma terminal, iniciar el servidor node:  node index.js
-6. Navegar a la carpeta Database_API, abrir otro terminal de windows, y ahí escribir lo siguiente para iniciar el servidor de bases de datos:  uvicorn main:app --reload --host 127.0.0.1
-7. En la primer terminal de windows, migrar el contrato de truffle a la blockchain local:  truffle migrate
-8. La app debería correr en http://localhost:8080/
-
-La votación se hace entrando como votante y usando la billetera Metamask. Se accede como admin con las credenciales guardadas en la base de datos para crear candidatos, fecha de votación y ver el proceso electoral.
+2. En Visual Studio Code, abrir el proyecto, abrir dos terminales y en una agrupar la app.js con browserify:  browserify ./src/js/app.js -o ./src/dist/app.bundle.js (Si no funciona por algún error de política de ejecución, correr el siguiente comando en Powershell como administrador: Set-ExecutionPolicy RemoteSigned)
+3. En la segunda terminal, navegar a la carpeta Database_API, y escribir lo siguiente para iniciar el servidor de bases de datos:  uvicorn main:app --reload --host 127.0.0.1
+4. En la primer terminal, iniciar el servidor node:  node index.js
+5. La app debería correr en http://localhost:8080/ (ABRIR 2 PESTAÑAS, una para user admin y otra para cliente)
+6. En una tercer terminal, migrar el contrato de truffle a la blockchain local:  truffle migrate
+7. Recargar ambas páginas. Iniciar sesión en las dos.
+8. En la página de admin, agregar 2 candidatos y establecer fecha de votación. (Se abrirá Metamask cada vez que se presione un botón pidiendo hacer una transacción con ETH. Confirmar)
+9. En la página de user, votar por uno de los candidatos.
